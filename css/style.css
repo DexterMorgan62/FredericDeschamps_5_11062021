@@ -1,0 +1,15 @@
+#ask-produit{
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+#produit-result{
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+P{
+    margin-bottom: 0;
+}
