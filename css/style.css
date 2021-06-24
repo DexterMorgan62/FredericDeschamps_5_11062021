@@ -12,34 +12,48 @@
 }
 P {
   margin-bottom: 0;
-} /*produits*/
+}
+.display-5,
+.lead {
+  text-align: center;
+}
+/*produits*/
 .box-title-cameras {
   position: relative;
-  background-color: #070707;
   border-radius: 20px;
   padding: 10px;
 }
-.cameras h2 {
-  margin-left: 15px;
+.box-title-cameras h2 {
+  margin-bottom: 20px;
+  text-align: center;
 }
 #box-cameras {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-content: space-between;
   align-items: center;
-  grid-gap: 40px;
+  grid-gap: 80px;
   padding-bottom: 40px;
+  text-align: center;
 }
 #box-cameras img {
-    height: 300px; 
-    border-radius: 21px 21px 0 0;
+  height: 170px;
+  border-radius: 21px 21px 21px 21px;
+  width: 100%;
+  transform-origin: 50% 65%;
+  transition: transform 5s, 3s ease-in-out;
+  object-fit: cover;
+  padding: 2px;
 }
-
+#box-cameras img:hover {
+  transform: scale(1.6);
+}
 /* Details des vignettess produits */
 .vignette-cameras {
   border-radius: 20px;
-  padding: 5px 5px 10px 5px;
-  box-shadow: 8px 8px 12px #aaa;
+  padding: 10px;
+  box-shadow: 0px 0px 15px 5px #aaa;
+  overflow: hidden;
 }
 .name-cameras {
   font-weight: 800;
@@ -50,4 +64,22 @@ P {
   font-size: 16px;
   font-weight: 500;
   margin-left: 10px;
+}
+/* Smartphone jusqu'a 767px de large*/
+@media screen and (max-width: 767px) {
+  .main,
+  .box-title-cameras,
+  #box-cameras {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    padding: 0.5rem;
+  }
+}
+/* Tablette de 767px a 1024px de large */
+@media screen and (max-width: 1024px) {
+  #box-cameras {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
