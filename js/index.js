@@ -1,45 +1,49 @@
-    fetch("http://localhost:3000/api/cameras")
+fetch("http://localhost:3000/api/cameras")
 
-    .then(function(res) {
-      if (res.ok) {
-        return res.json();
-      }
-    })
-    .then(function(value) {
-      showThumbnails (value)
-
-      
-    })
-    .catch(function(err) {
-      // Une erreur est survenue
-    });
-
-    const showThumbnails = cameras => {
-      console.log(cameras);
-      const productsDiv = document.getElementById("products")
-      for (camera of cameras){
-        const cameraName = document.createElement("h3")
-        cameraName.innerHTML = camera.name
-
-        productsDiv.appendChild (cameraName)
-
-        const cameraDescription = document.createElement("p")
-        cameraDescription.innerHTML = camera.description
-
-        productsDiv.appendChild (cameraDescription)
-
-        const cameraPrice = document.createElement("p")
-        cameraPrice.innerHTML = camera.price
-
-        productsDiv.appendChild (cameraPrice)
-
-        /*image1 = new Image(46,46);
-        const cameraImage = document.createElement("img")
-        cameraImage.innerHTML = camera.imageUrl
-
-        productsDiv.appendChild (cameraImage)
-        cameraImage.src = url
-        */
-      }
-
+  .then(function (res) {
+    if (res.ok) {
+      return res.json();
     }
+  })
+  .then(function (value) {
+    showThumbnails(value)
+
+
+  })
+  .catch(function (err) {
+    // Une erreur est survenue
+  });
+
+const showThumbnails = cameras => {
+  console.log(cameras);
+
+  const boxCameras = document.getElementById("box-cameras")
+  
+
+  for (camera of cameras) {
+    const vignetteCameras = document.createElement("Div")
+    boxCameras.appendChild(vignetteCameras)
+    console.log(vignetteCameras);
+    const nameVignette = camera.name
+    vignetteCameras.className = "vignette-cameras" + "-" + nameVignette
+    
+    const cameraName = document.createElement("name.cameras")
+    cameraName.innerHTML = camera.name
+    vignetteCameras.appendChild(cameraName)
+
+    const cameraDescription = document.createElement("p")
+    cameraDescription.innerHTML = camera.description
+    vignetteCameras.appendChild(cameraDescription)
+
+    const cameraPrice = document.createElement("price.cameras")
+    cameraPrice.innerHTML = camera.price
+    vignetteCameras.appendChild(cameraPrice)
+
+    /*const cameraImage = document.createElement("img")
+    
+    vignetteCameras.appendChild(cameraImage)
+  */
+    
+  }
+
+}

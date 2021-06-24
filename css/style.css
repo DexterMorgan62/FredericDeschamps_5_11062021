@@ -13,16 +13,16 @@
 P {
   margin-bottom: 0;
 } /*produits*/
-.box-products {
+.box-title-cameras {
   position: relative;
   background-color: #070707;
   border-radius: 20px;
   padding: 10px;
 }
-#products h3 {
+.cameras h2 {
   margin-left: 15px;
 }
-#products {
+#box-cameras {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-content: space-between;
@@ -30,23 +30,23 @@ P {
   grid-gap: 40px;
   padding-bottom: 40px;
 }
-.box-products img {
+#box-cameras img {
     height: 300px; 
     border-radius: 21px 21px 0 0;
 }
 
 /* Details des vignettess produits */
-.vignettes-products {
+.vignette-cameras {
   border-radius: 20px;
   padding: 5px 5px 10px 5px;
   box-shadow: 8px 8px 12px #aaa;
 }
-.products-name {
+.name-cameras {
   font-weight: 800;
   font-size: 18px;
   margin-left: 10px;
 }
-.products-prix {
+.price-cameras {
   font-size: 16px;
   font-weight: 500;
   margin-left: 10px;
