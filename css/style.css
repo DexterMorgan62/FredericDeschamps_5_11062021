@@ -13,6 +13,9 @@
 P {
   margin-bottom: 0;
 }
+.bg-dark {
+  border-radius: 21px 21px 21px 21px;
+}
 .display-5,
 .lead {
   text-align: center;
