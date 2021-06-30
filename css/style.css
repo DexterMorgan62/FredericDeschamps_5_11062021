@@ -68,6 +68,16 @@ P {
   font-weight: 500;
   margin-left: 10px;
 }
+.products-result {
+  color: white;
+}
+.products_photo img {
+  justify-items: left;
+  height: 200px;
+}
+.products ul li {
+  text-align: right;
+}
 /* Smartphone jusqu'a 767px de large*/
 @media screen and (max-width: 767px) {
   .main,

@@ -42,11 +42,14 @@ const showThumbnails = cameras => {
     const cameraImage = document.createElement("img")
     cameraImage.src=camera.imageUrl 
     vignetteCameras.appendChild(cameraImage)
+   
   
     const cameraLink = document.createElement("a")
     cameraLink.href= 'product.html?id=' + camera._id
     vignetteCameras.appendChild(cameraLink)
-    
+    cameraLink.addEventListener("click", () =>{
+      
+    })
   }
 
 }
