@@ -31,13 +31,13 @@ const showThumbnails = cameras => {
     cameraName.innerHTML = camera.name
     vignetteCameras.appendChild(cameraName)
 
-    const cameraDescription = document.createElement("p")
+    /*const cameraDescription = document.createElement("p")
     cameraDescription.innerHTML = camera.description
     vignetteCameras.appendChild(cameraDescription)
 
     const cameraPrice = document.createElement("p")
     cameraPrice.innerHTML = camera.price
-    vignetteCameras.appendChild(cameraPrice)
+    vignetteCameras.appendChild(cameraPrice)*/
 
     const cameraImage = document.createElement("img")
     cameraImage.src=camera.imageUrl 
@@ -47,9 +47,7 @@ const showThumbnails = cameras => {
     const cameraLink = document.createElement("a")
     cameraLink.href= 'product.html?id=' + camera._id
     vignetteCameras.appendChild(cameraLink)
-    cameraLink.addEventListener("click", () =>{
-      
-    })
+
   }
 
 }

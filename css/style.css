@@ -11,7 +11,7 @@
   margin-bottom: 20px;
 }
 P {
-  margin-bottom: 0;
+  margin-bottom: 10px;
 }
 .bg-dark {
   border-radius: 21px 21px 21px 21px;
@@ -43,13 +43,8 @@ P {
   height: 170px;
   border-radius: 21px 21px 21px 21px;
   width: 100%;
-  transform-origin: 50% 65%;
-  transition: transform 5s, 3s ease-in-out;
   object-fit: cover;
   padding: 2px;
-}
-#box-cameras img:hover {
-  transform: scale(1.6);
 }
 /* Details des vignettess produits */
 .vignette-cameras {
@@ -68,15 +63,20 @@ P {
   font-weight: 500;
   margin-left: 10px;
 }
+.mise_en_page_products {
+  display: flex;
+}
+.products ul{
+list-style: none;
+text-align: left;
+padding: 10px;
+}
 .products-result {
   color: white;
 }
 .products_photo img {
   justify-items: left;
   height: 200px;
-}
-.products ul li {
-  text-align: right;
 }
 /* Smartphone jusqu'a 767px de large*/
 @media screen and (max-width: 767px) {
