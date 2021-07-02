@@ -63,18 +63,18 @@ P {
   font-weight: 500;
   margin-left: 10px;
 }
-.mise_en_page_products {
+.vignette-product {
   display: flex;
 }
-.products ul{
+.text-product ul{
 list-style: none;
 text-align: left;
 padding: 10px;
 }
-.products-result {
+#box-product {
   color: white;
 }
-.products_photo img {
+.photo-product img {
   justify-items: left;
   height: 200px;
 }
