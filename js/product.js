@@ -99,7 +99,7 @@ selectOption = document.getElementById("selection").value
 
   const buttonAdd = document.createElement("button")
   buttonAdd.className= "btn btn-primary"
-  
+  buttonAdd.id="button-add"
   buttonAdd.innerHTML= "Ajouter au panier"
   textProduct.appendChild(buttonAdd)
   buttonAdd.addEventListener("click", function(){
