@@ -10,7 +10,14 @@
   font-size: 24px;
   margin-bottom: 20px;
 }
-P {
+a {
+  text-decoration: none;
+  color: #aaa;
+}
+a:hover {
+  color: aliceblue;
+}
+p {
   margin-bottom: 10px;
 }
 .bg-dark {
@@ -66,17 +73,26 @@ P {
 .vignette-product {
   display: flex;
 }
-.text-product ul{
-list-style: none;
-text-align: left;
-padding: 10px;
+.text-product ul {
+  list-style: none;
+  text-align: left;
+  padding: 10px;
+  margin-top: 10px;
+}
+form{
+  align-items:center ;
 }
 #box-product {
   color: white;
 }
 .photo-product img {
-  justify-items: left;
-  height: 200px;
+  
+  height: 290px;
+  border-radius: 30px;
+padding: 15px;
+}
+.button-add{
+  background: salmon;
 }
 /* Smartphone jusqu'a 767px de large*/
 @media screen and (max-width: 767px) {

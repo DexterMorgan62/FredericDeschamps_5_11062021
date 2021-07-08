@@ -61,21 +61,50 @@ const boxProduct = document.getElementById("box-product")
   const descriptionProduct = document.createElement("li")
   descriptionProduct.innerText="Description: "+idProductSelectionner.description
   listProduct.appendChild(descriptionProduct)
-
-  const priceProduct = document.createElement("li")
-  priceProduct.innerText= "Prix: "+idProductSelectionner.price +" €"
-  listProduct.appendChild(priceProduct)
   
   const formOption = document.createElement("form")
   listProduct.appendChild(formOption)
   const labelOption = document.createElement("label")
   formOption.appendChild(labelOption)
-  labelOption.option = "option"
+  labelOption.htmlFor="option"
+  labelOption.innerText="Options: "
   const selectOption =document.createElement("select")
   formOption.appendChild(selectOption)
- 
+  selectOption.id = "selection"
+  selectOption.name="option"
   const option =document.createElement("option")
   selectOption.appendChild(option)
+  option.value="option"
+
+
+
+//nombre d'optionsconst choiceOption = document.getElementById("selection")
+ const numberOption = idProductSelectionner.lenses
+
+ 
+//boucle for pour afficher toutes les options
+/*for(var i = 0; i < numberOption.lenght; i++){
+  numberOption[i].selected = selectOption
+  console.log(numberOption[i])
+}   
+
+selectOption = document.getElementById("selection").value
+ console.log(selectOption)
+
+
+  const priceProduct = document.createElement("li")
+  priceProduct.innerText= "Prix: "+idProductSelectionner.price +" €"
+  listProduct.appendChild(priceProduct)
+*/
+
+  const buttonAdd = document.createElement("button")
+  buttonAdd.className= "btn btn-primary"
+  
+  buttonAdd.innerHTML= "Ajouter au panier"
+  textProduct.appendChild(buttonAdd)
+  buttonAdd.addEventListener("click", function(){
+
+  })
 
 }
 
