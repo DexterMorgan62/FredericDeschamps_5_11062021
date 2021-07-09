@@ -101,12 +101,18 @@ form {
 @media screen and (max-width: 767px) {
   .main,
   .box-title-cameras,
-  #box-cameras .vignette-product {
+  .vignette-product {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: auto;
     padding: 0.5rem;
+  }
+  #box-cameras {
+    display: block;
+  }
+  .vignette-cameras {
+    margin-bottom: 20px;
   }
 }
 /* Tablette de 767px a 1024px de large */
