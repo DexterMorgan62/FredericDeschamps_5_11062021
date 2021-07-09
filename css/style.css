@@ -73,7 +73,7 @@ p {
 .vignette-product {
   display: flex;
 }
-.text-product ul {
+#text-product ul {
   list-style: none;
   text-align: left;
   padding: 10px;
@@ -82,10 +82,10 @@ p {
 form {
   align-items: center;
 }
-#box-product {
+.box-product {
   color: white;
 }
-.photo-product img {
+#vignette-product img {
   height: 290px;
   border-radius: 30px;
   padding: 15px;
@@ -130,7 +130,7 @@ form {
   .px-md-5 {
     padding: 0 !important;
   }
-  .text-product ul {
+  #text-product ul {
     text-align: center;
   }
 }

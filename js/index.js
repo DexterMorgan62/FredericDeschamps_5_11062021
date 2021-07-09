@@ -7,8 +7,6 @@ fetch("http://localhost:3000/api/cameras")
   })
   .then(function (value) {
     showThumbnails(value)
-
-
   })
   .catch(function (err) {
     // Une erreur est survenue

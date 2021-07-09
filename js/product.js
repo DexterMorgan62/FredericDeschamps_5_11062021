@@ -30,26 +30,16 @@ const idProductSelectionner = cameras.find((element) => element._id === id)
 
 
 //selectionner la class ou je vais injecter le code html
-const boxProduct = document.getElementById("box-product")
-
+const vignetteProduct = document.getElementById("vignette-product")
+const textProduct = document.getElementById("text-product")
 
 //la structure html pour l'affichage du produit sélectionné
-  const vignetteProduct = document.createElement("Div")
-  boxProduct.appendChild(vignetteProduct)
-  console.log(vignetteProduct)
-  
-  vignetteProduct.className = "vignette-product"
-  const photoProduct = document.createElement("Div")
-  vignetteProduct.appendChild(photoProduct)
-  photoProduct.className = "photo-product"
 
   const ImageProduct = document.createElement("img")
   ImageProduct.src=idProductSelectionner.imageUrl
-  photoProduct.appendChild(ImageProduct)
+  vignetteProduct.appendChild(ImageProduct)
   
-  const textProduct = document.createElement("div")
   vignetteProduct.appendChild(textProduct)
-  textProduct.className = "text-product"
 
   const listProduct = document.createElement("ul")
   textProduct.appendChild(listProduct)
@@ -62,45 +52,36 @@ const boxProduct = document.getElementById("box-product")
   descriptionProduct.innerText="Description: "+idProductSelectionner.description
   listProduct.appendChild(descriptionProduct)
   
-  const formOption = document.createElement("form")
-  listProduct.appendChild(formOption)
-  const labelOption = document.createElement("label")
-  formOption.appendChild(labelOption)
-  labelOption.htmlFor="option"
-  labelOption.innerText="Options: "
-  const selectOption =document.createElement("select")
-  formOption.appendChild(selectOption)
-  selectOption.id = "selection"
-  selectOption.name="option"
-  const option =document.createElement("option")
-  selectOption.appendChild(option)
-  option.value="option"
-
-
-
-//nombre d'optionsconst choiceOption = document.getElementById("selection")
- const numberOption = idProductSelectionner.lenses
-
- 
-//boucle for pour afficher toutes les options
-/*for(var i = 0; i < numberOption.lenght; i++){
-  numberOption[i].selected = selectOption
-  console.log(numberOption[i])
-}   
-
-selectOption = document.getElementById("selection").value
- console.log(selectOption)
-
-
   const priceProduct = document.createElement("li")
   priceProduct.innerText= "Prix: "+idProductSelectionner.price +" €"
   listProduct.appendChild(priceProduct)
+  
+  const option =document.createElement("option")
+  selectOption.appendChild(option)
+  
+  const productOption = idProductSelectionner.lenses
+  for(productOption of productOption.option) {
+
+    selectOption.innerText=productOption.value
+  }
+
+//nombre d'options
+ /*const choiceOption = document.getElementById("selection")
+ const numberOption = idProductSelectionner.lenses
+ console.log(numberOption)
+
+//boucle for pour afficher toutes les options
+for(var i = 0; i < numberOption.lenght; i++){
+  numberOption[i].selected = selectOption
+
+}   
+choiceOption.innerText = numberOption[i]
+selectOption = document.getElementById("selection").value
 */
 
-  const buttonAdd = document.createElement("button")
-  buttonAdd.className= "btn btn-primary"
-  buttonAdd.id="button-add"
-  buttonAdd.innerHTML= "Ajouter au panier"
+
+
+ 
   textProduct.appendChild(buttonAdd)
   buttonAdd.addEventListener("click", function(){
 
