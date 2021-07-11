@@ -82,7 +82,7 @@ p {
 form {
   align-items: center;
 }
-.box-product {
+#box-product {
   color: white;
 }
 #vignette-product img {

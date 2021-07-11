@@ -61,7 +61,7 @@ const textProduct = document.getElementById("text-product")
   
   const productOption = idProductSelectionner.lenses
   for(productOption of productOption.option) {
-
+    console.log(productOption)
     selectOption.innerText=productOption.value
   }
 
