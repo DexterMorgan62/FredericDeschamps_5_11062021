@@ -56,14 +56,17 @@ const textProduct = document.getElementById("text-product")
   priceProduct.innerText= "Prix: "+idProductSelectionner.price +" €"
   listProduct.appendChild(priceProduct)
   
-  const option =document.createElement("option")
-  selectOption.appendChild(option)
   
   const productOption = idProductSelectionner.lenses
-  for(productOption of productOption.option) {
-    console.log(productOption)
-    selectOption.innerText=productOption.value
-  }
+// boucle sur toutes les options
+  for( choiceOption of productOption){ 
+    const option =document.createElement("option")
+    selectOption.appendChild(option)
+// cree 
+    option.innerHTML = choiceOption
+    selectOption.appendChild(option)
+    console.log(choiceOption)
+}
 
 //nombre d'options
  /*const choiceOption = document.getElementById("selection")
