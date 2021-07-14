@@ -51,8 +51,9 @@ const textProduct = document.getElementById("text-product")
   listProduct.appendChild(descriptionProduct)
   
   const priceProduct = document.createElement("li")
-  const convertEuro = (new Intl.NumberFormat('fr-FR', {style:'currency', currency: 'EUR'}).format(idProductSelectionner.price))
-
+  const priceEuro = (idProductSelectionner.price/100)
+  const convertEuro = (new Intl.NumberFormat('fr-FR', {style:'currency', currency: 'EUR'}).format(priceEuro))
+  
   priceProduct.innerText= "Prix: "+ convertEuro
   listProduct.appendChild(priceProduct)
   
