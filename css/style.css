@@ -70,14 +70,27 @@ p {
   font-weight: 500;
   margin-left: 10px;
 }
-.vignette-product {
-  display: flex;
+
+#text-product {
+  position: relative;
+}
+.option {
+  position: absolute;
+  bottom: 20px;
+  right: 40px;
+}
+#btn-add {
+  margin: 20px;
+}
+#option {
+  padding: 10px;
 }
 #text-product ul {
   list-style: none;
   text-align: left;
+  margin-top: 20px;
+  margin-right: 10px;
   padding: 10px;
-  margin-top: 10px;
 }
 form {
   align-items: center;
@@ -85,17 +98,15 @@ form {
 #box-product {
   color: white;
 }
-#vignette-product img {
-  height: 290px;
+
+#photo-product img {
+  height: 240px;
   border-radius: 30px;
   padding: 15px;
 }
 .bg-black {
   width: 80%;
   border-radius: 21px 21px 0 0;
-}
-#button-add {
-  margin: 10px;
 }
 /* Smartphone jusqu'a 767px de large*/
 @media screen and (max-width: 767px) {
@@ -114,23 +125,25 @@ form {
   .vignette-cameras {
     margin-bottom: 20px;
   }
+  .option {
+    position: static;
+    bottom: 30px;
+  }
+  #text-product ul {
+    text-align: center;
+  }
 }
 /* Tablette de 767px a 1024px de large */
 @media screen and (max-width: 1024px) {
   #box-cameras {
     grid-template-columns: repeat(2, 1fr);
   }
-  .vignette-product {
-    display: grid;
-  }
+
   .bg-black {
     width: 100%;
   }
   .pt-md-5,
   .px-md-5 {
     padding: 0 !important;
-  }
-  #text-product ul {
-    text-align: center;
   }
 }

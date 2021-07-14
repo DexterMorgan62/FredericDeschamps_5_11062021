@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="description">
   <link rel="shortcut icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
   <!-- MDB -->
@@ -32,35 +33,40 @@
   </nav>
 </header>
 <main>
-  <div class="bg-light pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-    <div class="my-3 p-3">
-      <h1 class="display-5">Produits</h1>
-      <p class="lead">Choisir les produits</p>
-    </div>
-    <div class="bg-black shadow-sm mx-auto">
-      <div id="box-product">
-        <div id="vignette-product">
-          <!--injection code js-->
-        </div>
-
-        <div id="text-product">
-          <!--injection code js-->
-        </div>
-
-
-        <form>
-          <label for="option">Options</label>
-          <select name="option" id="selectOption">
-            <!--injection code js-->
-          </select>
-        </form>
+  <div class="container-fluid">
+    <div class="bg-light pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+      <div class="my-3 p-3">
+        <h1 class="display-5">Produits</h1>
+        <p class="lead">Choisir les produits</p>
       </div>
-      <button id="btn-add" class="btn btn-primary" name="btn-add">Ajouter au panier"</button>
+      <div class="bg-black shadow-sm mx-auto">
+        <div class="row" id="box-product">
+          <div class="col-sm-12 col-md-6" id="photo-product">
+            <!--injection code js-->
+
+          </div>
+          <div class="col-sm-12 col-md-6" id="text-product">
+            <!--injection code js-->
+
+
+            <div id="Options">
+              <form class="option">
+                <label for="option">Options</label>
+                <select name="option" id="selectOption">
+                  <!--injection code js-->
+                </select>
+              </form>
+
+            </div>
+          </div>
+        </div>
+            <button id="btn-add" class="btn btn-primary" name="btn-add">Ajouter au panier</button>
+          
+
+        
+      </div>
     </div>
-
   </div>
-
-
 </main>
 <!-- Footer -->
 <footer class="text-center text-lg-start bg-light text-muted">

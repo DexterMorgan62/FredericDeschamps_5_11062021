@@ -30,16 +30,14 @@ const idProductSelectionner = cameras.find((element) => element._id === id)
 
 
 //selectionner la class ou je vais injecter le code html
-const vignetteProduct = document.getElementById("vignette-product")
+const photoProduct = document.getElementById("photo-product")
 const textProduct = document.getElementById("text-product")
 
 //la structure html pour l'affichage du produit sélectionné
 
   const ImageProduct = document.createElement("img")
   ImageProduct.src=idProductSelectionner.imageUrl
-  vignetteProduct.appendChild(ImageProduct)
-  
-  vignetteProduct.appendChild(textProduct)
+  photoProduct.appendChild(ImageProduct)
 
   const listProduct = document.createElement("ul")
   textProduct.appendChild(listProduct)
@@ -53,9 +51,10 @@ const textProduct = document.getElementById("text-product")
   listProduct.appendChild(descriptionProduct)
   
   const priceProduct = document.createElement("li")
-  priceProduct.innerText= "Prix: "+idProductSelectionner.price +" €"
+  const convertEuro = (new Intl.NumberFormat('fr-FR', {style:'currency', currency: 'EUR'}).format(idProductSelectionner.price))
+
+  priceProduct.innerText= "Prix: "+ convertEuro
   listProduct.appendChild(priceProduct)
-  
   
   const productOption = idProductSelectionner.lenses
 // boucle sur toutes les options
@@ -64,7 +63,6 @@ const textProduct = document.getElementById("text-product")
     selectOption.appendChild(option)
 // cree 
     option.innerHTML = choiceOption
-    selectOption.appendChild(option)
     console.log(choiceOption)
 }
 
