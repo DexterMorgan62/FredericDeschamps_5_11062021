@@ -85,6 +85,8 @@ const textProduct = document.getElementById("text-product")
 // récupération des données du formulaire
   const dataCart = {
     idProductSelectionner : idProductSelectionner._id,
+    photoProduct:idProductSelectionner.imageUrl,
+    linkProduct: 'product.html?id=' + idProductSelectionner._id,
     nameProduct : idProductSelectionner.name,
     priceProduct : idProductSelectionner.price / 100,
     option : choiceForm,

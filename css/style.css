@@ -108,6 +108,14 @@ form {
   width: 80%;
   border-radius: 21px 21px 0 0;
 }
+
+#photo img {
+  height: 40px;
+  width: 100%;
+  object-fit: cover;
+  padding: 2px;
+}
+
 /* Smartphone jusqu'a 767px de large*/
 @media screen and (max-width: 767px) {
   .main,
