@@ -92,7 +92,7 @@ const textProduct = document.getElementById("text-product")
     option : choiceForm,
   }      
   console.log(dataCart)
-    
+  fff
 
 
 // local storage

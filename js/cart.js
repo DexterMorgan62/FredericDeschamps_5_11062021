@@ -1,15 +1,11 @@
-const productSaveLocaleStorage = JSON.parse(localStorage.getItem("products"))
+const cart = JSON.parse(localStorage.getItem("products"))
 
-console.log(productSaveLocaleStorage)
+console.log(cart)
 
 // affichage des produits du panier
-// selection de la classe ou injecter code HTML
-const boxCart = document.getElementById("box-cart")
 
-const productSummary = document.getElementById("product-summary")
-
-// si pannier vide" afficher panier vide"
-if(productSaveLocaleStorage === null){
+// si panier vide" afficher panier vide"
+if(cart === null){
     console.log("vide")
     const emptyCart = document.createElement("p")
     emptyCart.innerText= "Le panier est vide"
@@ -17,37 +13,44 @@ if(productSaveLocaleStorage === null){
 }
 else{
 
-    for(productSaveLocaleStorages of productSaveLocaleStorage){
+    for(products of cart){
 
+    const tableBody = document.getElementById("cart")
+    const tableCart = document.createElement("tr")  
+    tableBody.appendChild(tableCart)
 
-    const arrayPhoto = document.getElementById("photo")
+    const arrayPhoto = document.createElement("td")
     const imageCart = document.createElement("img")
    
     arrayPhoto.appendChild(imageCart)
-    imageCart.src=productSaveLocaleStorages.photoProduct
-    imageCart.href= productSaveLocaleStorages.linkProduct
+    tableCart.appendChild(arrayPhoto)
+    imageCart.src=products.photoProduct
+    imageCart.href= products.linkProduct
 
-    const nameCart = document.getElementById("name")
-    products.appendChild(nameCart)
-    nameCart.innerHTML=productSaveLocaleStorages.nameProduct
+    const nameCart = document.createElement("td")
+    tableCart.appendChild(nameCart)
+    nameCart.innerHTML=products.nameProduct
 
-    const optionCart = document.getElementById("option")
-    products.appendChild(optionCart)
-    optionCart.innerHTML=productSaveLocaleStorages.option
+    const optionCart = document.createElement("td")
+    tableCart.appendChild(optionCart)
+    optionCart.innerHTML=products.option
 
-    const priceCart = document.getElementById("price")
-    products.appendChild(priceCart)
-    priceCart.innerHTML=productSaveLocaleStorages.priceProduct
+    const priceCart = document.createElement("td")
+    tableCart.appendChild(priceCart)
+    priceCart.innerHTML=products.priceProduct
 
-    const deleteCart = document.getElementById("button")
-    deleteCart.className= "bi bi-trash"
-    products.appendChild(deleteCart)
+    const deleteCart = document.createElement("td")
+    const buttonDelete = document.createElement("button")
+    buttonDelete.className= "fa fa-trash"
+    deleteCart.appendChild(buttonDelete)
+    tableCart.appendChild(deleteCart)
 
     // ecouter bouton SUPPRIMER
-  deleteCart.addEventListener("click", (event)=>{
+    deleteCart.addEventListener("click", (event)=>{
     event.preventDefault()
     localStorage.removeItem("idProductSelectionner")
-  
+      
+
   })
   }
 }

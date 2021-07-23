@@ -109,11 +109,24 @@ form {
   border-radius: 21px 21px 0 0;
 }
 
-#photo img {
+#cart img {
   height: 40px;
   width: 100%;
   object-fit: cover;
   padding: 2px;
+}
+#products{
+  text-align: center;
+}
+.fa-trash{
+border: none;
+color: red;
+background-color: transparent;
+}
+.fa-trash:active{
+  background-color: #fff;
+  color: #fff;
+
 }
 
 /* Smartphone jusqu'a 767px de large*/
