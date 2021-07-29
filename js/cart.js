@@ -9,13 +9,14 @@ if(cart === null){
     console.log("vide")
     const emptyCart = document.createElement("p")
     emptyCart.innerText= "Le panier est vide"
+    const boxCart = document.getElementById("box-cart")
     boxCart.appendChild(emptyCart)
 }
 else{
 
     for(products of cart){
 
-    const tableBody = document.getElementById("cart")
+    const tableBody = document.getElementById("box-cart")
     const tableCart = document.createElement("tr")  
     tableBody.appendChild(tableCart)
 
@@ -24,35 +25,82 @@ else{
    
     arrayPhoto.appendChild(imageCart)
     tableCart.appendChild(arrayPhoto)
+    imageCart.className="img-thumbnail"
     imageCart.src=products.photoProduct
     imageCart.href= products.linkProduct
 
     const nameCart = document.createElement("td")
+    const nameProduct = document.createElement("h2")
     tableCart.appendChild(nameCart)
-    nameCart.innerHTML=products.nameProduct
+    nameCart.appendChild(nameProduct)
+    nameProduct.innerHTML=products.nameProduct
 
     const optionCart = document.createElement("td")
+    const optionProduct = document.createElement("h2")
     tableCart.appendChild(optionCart)
-    optionCart.innerHTML=products.option
+    optionCart.appendChild(optionProduct)
+    optionProduct.innerHTML=products.option
 
     const priceCart = document.createElement("td")
+    const priceProduct = document.createElement("h2")
     tableCart.appendChild(priceCart)
-    priceCart.innerHTML=products.priceProduct
+    priceCart.appendChild(priceProduct)
+    priceProduct.innerHTML=products.priceProduct
 
-    const deleteCart = document.createElement("td")
+    const tableColumneCart = document.createElement("td")
     const buttonDelete = document.createElement("button")
     buttonDelete.className= "fa fa-trash"
-    deleteCart.appendChild(buttonDelete)
-    tableCart.appendChild(deleteCart)
+    
+    const idproductsel =products.idProductSelectionner
+    tableColumneCart.dataset.idproduct = idproductsel
+
+
+  // transformation en JSON et envoie dans la KEY "idproduct" pour chaque produit dans le local storage et convertir en JSON  
+   // localStorage.setItem(idproductsel, JSON.stringify(products))
+    tableColumneCart.appendChild(buttonDelete)
+    tableCart.appendChild(tableColumneCart)
+    tableCart.className=idproductsel  
 
     // ecouter bouton SUPPRIMER
-    deleteCart.addEventListener("click", (event)=>{
+    buttonDelete.addEventListener("click", (event)=>{
     event.preventDefault()
-    localStorage.removeItem("idProductSelectionner")
-      
 
+    //const deleteProduct =  document.querySelector("tr:nth-child(idproductsel)")
+    console.log(deleteProduct)
+    tableCart.removeChild()
+
+    localStorage.removeItem(idproductsel)
+    alert("supprimer"+idproductsel)
+    window.location.href = "cart.html"
+
+    
   })
+  const totalCart = []
+  for(products of cart){
+  const priceProductCart = products.priceProduct
+
+  totalCart.push(priceProductCart)
   }
+  // la méthode reduce() permet d'accumuler les valeurs d'une liste
+  const reducer = (accumulator, currentValue) => accumulator + currentValue
+  const total = totalCart.reduce(reducer,0)
+  const totalEuro = (new Intl.NumberFormat('fr-FR', {style:'currency', currency: 'EUR'}).format(total))
+  const priceTotal = document.getElementById("price-total")
+  priceTotal.innerHTML="Prix total= "+totalEuro
+
+//vider le panier
+
+const buttonDeleteAll = document.querySelector("#delete-all")
+
+// ecouter bouton SUPPRIMER tout
+   buttonDeleteAll.addEventListener("click", (event)=>{
+      event.preventDefault()
+      localStorage.clear("products")
+      alert("Le panier a été vidé")
+      window.location.href = "cart.html"
+
+    })
+    }
 }
 
 

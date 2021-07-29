@@ -22,10 +22,6 @@
         <a class="navbar-brand" href="index.html">
           <img src="/logo.png" alt="" width="100" height="50" class="d-inline-block align-text-top">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02"
-          aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
       </div>
     </nav>
   </header>
@@ -35,9 +31,8 @@
         <h1 class="display-5">Panier</h1>
         <h2 class="lead">Produits sélectionnés</h2>
       </div>
-      <div class="bg-white text-black shadow-sm mx-auto"
-        style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-        <table class="table table-sm" id="box-cart">
+      <div class="bg-white text-black shadow-sm mx-auto" style="width: 80%; border-radius: 21px 21px 0 0;">
+        <table id="box-cart" class="table table-sm" id="box-cart">
           <thead class="thead-dark">
             <tr id="product-summary">
               <th scope="col">image</th>
@@ -47,18 +42,43 @@
               <th scope="col">Supprimer</th>
             </tr>
           </thead>
-          <tbody id="cart">
-         
-          </tbody>
         </table>
+        <div id="price-total">
 
-        <div id="total-price"> Montant total = 190€</div>
-        <div id="delete-cart">Vider la panier</div>
+        </div>
+        <button id="delete-all">Vider le panier
 
-
-
-
+        </button>
       </div>
+      <!--formulaire-->
+      <div id="form">
+        <h2>Formulaire de commande</h2>
+      </div>
+      <form>
+        <div class="mb-3">
+          <label for="name" class="form-label">nom</label>
+          <input type="name" class="form-control" id="name" aria-describedby="namehelp">
+          <div id="namehelp" class="form-text">nom de famille</div>
+        </div>
+        <div class="mb-3">
+          <label for="mail" class="form-label">@mail</label>
+          <input type="mail" class="form-control" id="name" aria-describedby="namehelp">
+          <div id="mailhelp" class="form-text">nous ne partagerons jamais votre @mail</div>
+        </div>
+        <div class="mb-3">
+          <label for="adress" class="form-label">adresse</label>
+          <input type="adress" class="form-control" id="name" aria-describedby="namehelp">
+          <div id="adresshelp" class="form-text">n° rue code postal ville</div>
+        </div>
+        <div class="mb-3">
+          <label for="tel" class="form-label">n° tel</label>
+          <input type="tel" class="form-control" id="name" aria-describedby="namehelp">
+          <div id="telhelp" class="form-text">pour suivi de commande</div>
+        </div>
+        <button id="sendform" type="submit" name="sendform">
+          Confirmation de la commande
+        </button>
+      </form>
   </main>
   <!-- Footer -->
   <footer class="text-center text-lg-start bg-light text-muted">

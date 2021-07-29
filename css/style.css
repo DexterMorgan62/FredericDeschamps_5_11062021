@@ -109,26 +109,42 @@ form {
   border-radius: 21px 21px 0 0;
 }
 
-#cart img {
-  height: 40px;
-  width: 100%;
-  object-fit: cover;
-  padding: 2px;
+#box-cart {
+  vertical-align: middle;
 }
-#products{
-  text-align: center;
+.fa-trash {
+  border: none;
+  color: red;
+  background-color: transparent;
 }
-.fa-trash{
-border: none;
-color: red;
-background-color: transparent;
-}
-.fa-trash:active{
+.fa-trash:active {
   background-color: #fff;
   color: #fff;
-
+}
+.pt-md-5,
+.px-md-5 {
+  padding: 0 !important;
+}
+h2 {
+  font-size: 16px;
+}
+.img-thumbnail {
+  max-height: 150px;
 }
 
+#price-total {
+  text-align: right;
+  margin-right: 120px;
+  padding-bottom: 20px;
+}
+#form{
+  background-color: rgb(37, 35, 37);
+  padding: 10px;
+  margin-top: 10px;
+}
+form{
+  background-color: rgb(179, 201, 161);
+}
 /* Smartphone jusqu'a 767px de large*/
 @media screen and (max-width: 767px) {
   .main,
@@ -162,9 +178,5 @@ background-color: transparent;
 
   .bg-black {
     width: 100%;
-  }
-  .pt-md-5,
-  .px-md-5 {
-    padding: 0 !important;
   }
 }

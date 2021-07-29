@@ -92,7 +92,6 @@ const textProduct = document.getElementById("text-product")
     option : choiceForm,
   }      
   console.log(dataCart)
-  fff
 
 
 // local storage
@@ -115,6 +114,7 @@ Consultez le panier OK ou revenir à l'accueil ANNULER`)){
   const addProduct = () => {
   // ajout dans le tableau avec données choisi par utilisateur
     productSaveLocaleStorage.push(dataCart)
+    
   // transformation en JSON et envoie dans la KEY "products" dans le local storage et convertir en JSON  
     localStorage.setItem("products", JSON.stringify(productSaveLocaleStorage))
   }
