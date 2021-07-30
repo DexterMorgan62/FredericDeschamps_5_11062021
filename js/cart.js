@@ -65,7 +65,7 @@ else{
     buttonDelete.addEventListener("click", (event)=>{
     event.preventDefault()
 
-    //const deleteProduct =  document.querySelector("tr:nth-child(idproductsel)")
+    /*const deleteProduct =  document.querySelector("tr:nth-child(idproductsel)")
     console.log(deleteProduct)
     tableCart.removeChild()
 
@@ -73,7 +73,7 @@ else{
     alert("supprimer"+idproductsel)
     window.location.href = "cart.html"
 
-    
+    */
   })
   const totalCart = []
   for(products of cart){
@@ -94,13 +94,24 @@ const buttonDeleteAll = document.querySelector("#delete-all")
 
 // ecouter bouton SUPPRIMER tout
    buttonDeleteAll.addEventListener("click", (event)=>{
-      event.preventDefault()
-      localStorage.clear("products")
-      alert("Le panier a été vidé")
-      window.location.href = "cart.html"
+    event.preventDefault()
+    localStorage.clear("products")
+    alert("Le panier a été vidé")
+    window.location.href = "cart.html"
 
     })
     }
+    // Formulaire
+    const sendForm = document.querySelector("#send-form")
+    sendForm.addEventListener("click", (event)=>{
+    event.preventDefault()
+    localStorage.setItem("name", document.querySelector("#name").value)
+    localStorage.setItem("mail", document.querySelector("#mail").value)
+    localStorage.setItem("adress", document.querySelector("#adress").value)
+    localStorage.setItem("tel", document.querySelector("#tel").value)
+    console.log(sendForm)
+     })
+  
 }
 
 
