@@ -110,6 +110,14 @@ const buttonDeleteAll = document.querySelector("#delete-all")
     localStorage.setItem("adress", document.querySelector("#adress").value)
     localStorage.setItem("tel", document.querySelector("#tel").value)
     console.log(sendForm)
+    // mettre les valeurs du formulaire dans un objet
+    const dataForm = {
+      name: localStorage.getItem("name"),
+      mail: localStorage.getItem("mail"),
+      adress: localStorage.getItem("adress"),
+      tel: localStorage.getItem("tel"),
+    }
+    console.log(dataForm)
      })
   
 }
