@@ -26,7 +26,7 @@ const showProduct = cameras => {
 
 //afichage du produit (de l'oblet) qui a été sélectionné par l'id
 
-const idProductSelectionner = cameras.find((element) => element._id === id)
+const idProduct = cameras.find((element) => element._id === id)
 
 console.log(id)
 //selectionner la class ou je vais injecter le code html
@@ -36,28 +36,28 @@ const textProduct = document.getElementById("text-product")
 //la structure html pour l'affichage du produit sélectionné
 
   const ImageProduct = document.createElement("img")
-  ImageProduct.src=idProductSelectionner.imageUrl
+  ImageProduct.src=idProduct.imageUrl
   photoProduct.appendChild(ImageProduct)
 
   const listProduct = document.createElement("ul")
   textProduct.appendChild(listProduct)
 
   const nameProduct = document.createElement("li")
-  nameProduct.innerText= "Nom: "+idProductSelectionner.name
+  nameProduct.innerText= "Nom: "+idProduct.name
   listProduct.appendChild(nameProduct)
 
   const descriptionProduct = document.createElement("li")
-  descriptionProduct.innerText="Description: "+idProductSelectionner.description
+  descriptionProduct.innerText="Description: "+idProduct.description
   listProduct.appendChild(descriptionProduct)
   
   const priceProduct = document.createElement("li")
-  const priceEuro = (idProductSelectionner.price/100)
+  const priceEuro = (idProduct.price/100)
   const convertEuro = (new Intl.NumberFormat('fr-FR', {style:'currency', currency: 'EUR'}).format(priceEuro))
   
   priceProduct.innerText= "Prix: "+ convertEuro
   listProduct.appendChild(priceProduct)
   
-  const productOption = idProductSelectionner.lenses
+  const productOption = idProduct.lenses
 // boucle sur toutes les options
   for( choiceOption of productOption){ 
     const option =document.createElement("option")
@@ -84,11 +84,11 @@ const textProduct = document.getElementById("text-product")
 
 // récupération des données du formulaire
   const dataCart = {
-    idProductSelectionner : idProductSelectionner._id,
-    photoProduct:idProductSelectionner.imageUrl,
-    linkProduct: 'product.html?id=' + idProductSelectionner._id,
-    nameProduct : idProductSelectionner.name,
-    priceProduct : idProductSelectionner.price / 100,
+    idProduct : idProduct._id,
+    photoProduct:idProduct.imageUrl,
+    linkProduct: 'product.html?id=' + idProduct._id,
+    nameProduct : idProduct.name,
+    priceProduct : idProduct.price / 100,
     option : choiceForm,
   }      
   console.log(dataCart)
@@ -98,11 +98,11 @@ const textProduct = document.getElementById("text-product")
 // stocker la récupération des données du formulaire dans le local storage
 
 // JSON.parse => convertir les données dans le local storage au format JSON  
-  var productSaveLocaleStorage= JSON.parse(localStorage.getItem("products"))
+  var cart= JSON.parse(localStorage.getItem("products"))
  
 // fonction fenêtre pop up confirmation panier
   const confirmationCart = () => {
-    if(window.confirm(`${idProductSelectionner.name} option: ${choiceForm} a bien été ajouté au panier
+    if(window.confirm(`${idProduct.name} option: ${choiceForm} a bien été ajouté au panier
 Consultez le panier OK ou revenir à l'accueil ANNULER`)){
     window.location.href = 'cart.html'  
     }
@@ -113,19 +113,19 @@ Consultez le panier OK ou revenir à l'accueil ANNULER`)){
 // fonction ajouter un produit dans le local storage
   const addProduct = () => {
   // ajout dans le tableau avec données choisi par utilisateur
-    productSaveLocaleStorage.push(dataCart)
+    cart.push(dataCart)
     
   // transformation en JSON et envoie dans la KEY "products" dans le local storage et convertir en JSON  
-    localStorage.setItem("products", JSON.stringify(productSaveLocaleStorage))
+    localStorage.setItem("products", JSON.stringify(cart))
   }
 // condition si il y a déja un produit
-  if(productSaveLocaleStorage){
+  if(cart){
     addProduct()
     confirmationCart()
   }
 // sinon   
   else{
-    productSaveLocaleStorage = []
+    cart = []
     addProduct()
     confirmationCart()
   }
