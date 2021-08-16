@@ -112,10 +112,30 @@ form {
 #box-cart {
   vertical-align: middle;
 }
+
+/*-------------------- css cart---------------------------*/
+
+#title {
+  color: #fff;
+  align-items: center;
+}
+#cart {
+  text-align: center;
+}
+#products-cart {
+  display: inline-flex;
+  width: 90%;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
 .fa-trash {
   border: none;
-  color: red;
+  color: rgb(161, 167, 157);
   background-color: transparent;
+}
+.fa-trash:hover {
+  color: red;
 }
 .fa-trash:active {
   background-color: #fff;
@@ -129,24 +149,45 @@ h2 {
   font-size: 16px;
 }
 .img-thumbnail {
-  max-height: 150px;
+  max-height: 90px;
 }
 
 #price-total {
-  text-align: right;
-  margin-right: 120px;
-  padding-bottom: 20px;
+  margin-right: 80px;
+  font-size: 18px;
+  font-weight: bold;
+}
+#delete-all {
+  border-radius: 10px;
+}
+#delete-all:hover {
+  background-color: red;
+}
+#end-cart {
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 10px;
 }
 #form-cart {
-  display: inline-block;
   background-color: rgb(13, 62, 86);
-  padding: 10px;
-  margin-top: 10px;
+  padding: 15px;
+  border-radius: 10px;
+  margin-right: 10px;
 }
 #form-data {
-  background-color: rgb(161, 167, 157);
+  background-color: rgb(210, 210, 210);
   display: flex;
   flex-direction: column;
+}
+#send-form {
+  border-radius: 10px;
+  margin-top: 50px;
+  padding: 10px;
+  background-color: rgb(161, 167, 157) rgb(68, 85, 68);
+}
+#send-form:hover {
+  background-color: greenyellow;
 }
 /* Smartphone jusqu'a 767px de large*/
 @media screen and (max-width: 767px) {
@@ -181,5 +222,12 @@ h2 {
 
   .bg-black {
     width: 100%;
+  }
+  #products-cart {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  #form-cart {
+    margin-top: 10px;
   }
 }

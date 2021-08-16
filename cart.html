@@ -17,7 +17,7 @@
 
 <body>
   <header>
-    <nav class="navbar navbar-dark bg-primary">
+    <nav class="navbar navbar-white">
       <div class="container-fluid">
         <a class="navbar-brand" href="index.html">
           <img src="/logo.png" alt="" width="100" height="50" class="d-inline-block align-text-top">
@@ -26,59 +26,72 @@
     </nav>
   </header>
   <main>
-    <div class="bg-primary pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-      <div class="my-3 py-3">
-        <h1 class="display-5">Panier</h1>
-        <h2 class="lead">Produits sélectionnés</h2>
-      </div>
-      <div class="bg-white text-black shadow-sm mx-auto" style="width: 80%; border-radius: 21px 21px 0 0;">
-        <table id="box-cart" class="table table-sm" id="box-cart">
-          <thead class="thead-dark">
-            <tr id="product-summary">
-              <th scope="col">image</th>
-              <th scope="col">nom</th>
-              <th scope="col">option</th>
-              <th scope="col">prix</th>
-              <th scope="col">Supprimer</th>
-            </tr>
-          </thead>
-        </table>
-        <div id="price-total">
-
+    <div class="container-fluid">
+      <div id="cart" class="bg-primary pt-3 px-3 pt-md-5 px-md-5 text-white overflow-hidden"
+        style="border-radius: 21px;">
+        <div class="my-3 py-3">
+          <h1 class="display-5">Panier</h1>
+          <p class="lead">Remplir le formulaire afin de confirmer la commande</p>
         </div>
-        <button id="delete-all">Vider le panier
-
-        </button>
-      </div>
-      <!--formulaire-->
-      <div id="form-cart">
-        <h2>Formulaire de commande</h2>
-
-        <form id="form-data">
-          <div class="mb-3">
-            <label for="name" class="form-label">nom et prénom</label>
-            <input type="name" class="form-control" id="name" aria-describedby="namehelp">
-            <div id="namehelp" class="form-text"></div>
+        <div id="products-cart">
+          <div class="bg-white text-black shadow-sm mx-auto" style="border-radius: 21px;">
+            <table id="box-cart" class="table table-sm" id="box-cart">
+              <thead class="thead-dark">
+                <h2 class="lead">Produits sélectionnés</h2>
+                <tr id="product-summary">
+                  <th scope="col">image</th>
+                  <th scope="col">nom</th>
+                  <th scope="col">option</th>
+                  <th scope="col">prix</th>
+                  <th scope="col">Supprimer</th>
+                </tr>
+              </thead>
+            </table>
+            <div id="end-cart">
+              <button id="delete-all">Vider le panier
+              </button>
+              <div id="price-total">
+              </div>
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="mail" class="form-label">mail</label>
-            <input type="mail" class="form-control" id="mail" aria-describedby="mailhelp">
-            <div id="mailhelp" class="form-text">nous ne partagerons jamais votre @mail</div>
+          <!--formulaire-->
+          <div id="form-cart">
+            <h2>Formulaire de commande</h2>
+            <form class="was-validated" id="form-data" novalidate>
+              <div class="col-md-12 mb-3">
+                <label for="name" class="form-label">nom et prénom</label>
+                <input type="text" class="form-control" id="name" required>
+                <div class="valid-feedback">Nom et prénom valide</div>
+                <div class="invalid-feedback">Nom et prénom ne peut être vide</div>
+              </div>
+              <div class="mb-3">
+                <label for="mail" class="form-label">mail</label>
+                <input type="email" class="form-control" id="mail" aria-describedby="mailhelp" required>
+                <div class="valid-feedback">@mail valide</div>
+                <div class="invalid-feedback">@mail ne peut être vide</div>
+                <div id="mailhelp" class="form-text">nous ne partagerons jamais votre @mail</div>
+              </div>
+              <div class="mb-3">
+                <label for="adress" class="form-label">adresse</label>
+                <textarea type="text" class="form-control" rows="2" id="adress" aria-describedby="adresshelp"
+                  required></textarea>
+                <div class="valid-feedback">Adresse valide</div>
+                <div class="invalid-feedback">Adresse ne peut être vide</div>
+                <div id="adresshelp" class="form-text">n° rue code postal ville</div>
+              </div>
+              <div class="mb-3">
+                <label for="tel" class="form-label">n° de téléphone</label>
+                <input type="tel" class="form-control" id="tel" aria-describedby="telhelp" required>
+                <div class="valid-feedback">N° de téléphone valide</div>
+                <div class="invalid-feedback">N° de téléphone ne peut être vide</div>
+                <div id="telhelp" class="form-text">pour suivi de la commande</div>
+              </div>
+            </form>
+            <button id="send-form" type="submit" name="sendform">
+              Confirmation de la commande
+            </button>
           </div>
-          <div class="mb-3">
-            <label for="adress" class="form-label">adresse</label>
-            <input type="adress" class="form-control" id="adress" aria-describedby="adresshelp">
-            <div id="adresshelp" class="form-text">n° rue code postal ville</div>
-          </div>
-          <div class="mb-3">
-            <label for="tel" class="form-label">n° de téléphone</label>
-            <input type="tel" class="form-control" id="tel" aria-describedby="telhelp">
-            <div id="telhelp" class="form-text">pour suivi de la commande</div>
-          </div>
-          <button id="send-form" type="submit" name="sendform">
-            Confirmation de la commande
-          </button>
-        </form>
+        </div>
       </div>
   </main>
   <!-- Footer -->
