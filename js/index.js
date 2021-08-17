@@ -9,6 +9,7 @@ fetch("http://localhost:3000/api/cameras")
   })
   .catch(function (err) {
     // Une erreur est survenue
+    alert("node serveur hors service")
   });
 
 const showThumbnails = (cameras) => {

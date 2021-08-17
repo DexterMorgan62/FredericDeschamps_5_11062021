@@ -120,36 +120,36 @@ if (cart === null) {
   const sendForm = document.querySelector("#send-form");
   sendForm.addEventListener("click", (event) => {
     event.preventDefault();
-    localStorage.setItem("name", document.querySelector("#name").value);
-    localStorage.setItem("mail", document.querySelector("#mail").value);
-    localStorage.setItem("adress", document.querySelector("#adress").value);
-    localStorage.setItem("tel", document.querySelector("#tel").value);
-
-    console.log(cart);
     // mettre les valeurs du formulaire dans un objet
-    const productsCart = [];
+    const products = [];
     for (product of cart) {
-      productsCart.push(product.nameProduct);
+      products.push(
+        product.nameProduct + " " + product.option + " " + product.priceProduct
+      );
     }
     const dataForm = {
-      mail: localStorage.getItem("mail"),
-      adress: localStorage.getItem("adress"),
-      tel: localStorage.getItem("tel"),
+      fisrtname: document.querySelector("#name").value,
+      lastname: document.querySelector("#name").value,
+      email: document.querySelector("#mail").value,
+      adress: document.querySelector("#adress").value,
     };
-
-    const confirmCommande = [productsCart, dataForm];
+    const total = document.querySelector("#price-total").outerText;
+    const confirmCommande = { products, total, dataForm };
 
     console.log(confirmCommande);
-  });
 
-  // envoie au backend
-  const sendBackend = () => {
-    const promise = fetch("http://localhost:3000/api/order", {
-      method: "POST",
-      body: JSON.stringify(dataForm),
-      headers: {
-        "Content-type": "application/json",
-      },
-    });
-  };
+    // envoie au backend
+    /*post("http://localhost:3000/api/cameras/order", confirmCommande)
+      .then(function (res) {
+        if (res.ok) {
+          return res.json();
+          windows.location.href = "order.html";
+        }
+      })
+      .catch(function (err) {
+        console.log(err);
+        // Une erreur est survenue
+        alert("node serveur hors service");
+      });*/
+  });
 }
