@@ -127,29 +127,33 @@ if (cart === null) {
         product.nameProduct + " " + product.option + " " + product.priceProduct
       );
     }
-    const dataForm = {
-      fisrtname: document.querySelector("#name").value,
+    const contact = {
+      firstname: document.querySelector("#name").value,
       lastname: document.querySelector("#name").value,
       email: document.querySelector("#mail").value,
       adress: document.querySelector("#adress").value,
     };
     const total = document.querySelector("#price-total").outerText;
-    const confirmCommande = { products, total, dataForm };
+    const confirmCommande = { products, total, contact };
 
     console.log(confirmCommande);
 
     // envoie au backend
-    /*post("http://localhost:3000/api/cameras/order", confirmCommande)
+    fetch("http://localhost:3000/api/cameras/order", {
+      method: "POST",
+      body: JSON.stringify({ contact, products }),
+    })
       .then(function (res) {
         if (res.ok) {
           return res.json();
-          windows.location.href = "order.html";
+          console.log(res);
+          windows.location.href = "confirmation.html";
         }
       })
       .catch(function (err) {
         console.log(err);
         // Une erreur est survenue
         alert("node serveur hors service");
-      });*/
+      });
   });
 }
