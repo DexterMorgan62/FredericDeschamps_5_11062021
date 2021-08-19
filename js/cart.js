@@ -122,33 +122,33 @@ if (cart === null) {
     event.preventDefault();
     // mettre les valeurs du formulaire dans un objet
     const products = [];
+
     for (product of cart) {
-      products.push(
-        product.nameProduct + " " + product.option + " " + product.priceProduct
-      );
+      products.push(product.idProduct);
     }
     const contact = {
-      firstname: document.querySelector("#name").value,
-      lastname: document.querySelector("#name").value,
+      firstName: document.querySelector("#name").value,
+      lastName: document.querySelector("#name").value,
+      address: document.querySelector("#adress").value,
+      city: document.querySelector("#adress").value,
       email: document.querySelector("#mail").value,
-      adress: document.querySelector("#adress").value,
     };
     const total = document.querySelector("#price-total").outerText;
-    const confirmCommande = { products, total, contact };
-
-    console.log(confirmCommande);
 
     // envoie au backend
     fetch("http://localhost:3000/api/cameras/order", {
       method: "POST",
-      body: JSON.stringify({ contact, products }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ products, contact }),
     })
       .then(function (res) {
         if (res.ok) {
           return res.json();
           console.log(res);
-          windows.location.href = "confirmation.html";
         }
+      })
+      .then(function () {
+        
       })
       .catch(function (err) {
         console.log(err);
