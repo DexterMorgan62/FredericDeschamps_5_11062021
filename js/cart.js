@@ -147,13 +147,17 @@ if (cart === null) {
           console.log(res);
         }
       })
-      .then(function () {
-        
+      .then(function (value) {
+        console.log(value);
+        localStorage.setItem("order", JSON.stringify(value));
       })
       .catch(function (err) {
         console.log(err);
         // Une erreur est survenue
         alert("node serveur hors service");
       });
+    window.open("confirmation.html", "_blank");
+  
+    
   });
 }
