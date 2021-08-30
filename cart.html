@@ -23,9 +23,12 @@
           <img src="/img/logo.png" alt="" width="100" height="50" class="d-inline-block align-text-top">
         </a>
         <a role="button" class="btn btn-outline-secondary" href="index.html">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
-            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+            <path fill-rule="evenodd"
+              d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
           </svg>
         </a>
       </div>
@@ -64,38 +67,43 @@
           <div id="form-cart">
             <h2>Formulaire de commande</h2>
             <form class="was-validated" id="form-data" novalidate>
-              <div class="col-md-12 mb-3">
-                <label for="name" class="form-label">nom et prénom</label>
-                <input type="text" class="form-control" id="name" required>
-                <div class="valid-feedback">Nom et prénom valide</div>
-                <div class="invalid-feedback">Nom et prénom ne peut être vide</div>
+              <div class="col-md-11 mb-2">
+                <label for="firstName" class="form-label">Prénom</label>
+                <input type="text" class="form-control" id="firstName" required>
+                <div class="valid-feedback">Prénom valide</div>
+                <div class="invalid-feedback">Prénom ne peut être vide</div>
               </div>
-              <div class="mb-3">
-                <label for="mail" class="form-label">mail</label>
-                <input type="email" class="form-control" id="mail" aria-describedby="mailhelp" required>
-                <div class="valid-feedback">@mail valide</div>
-                <div class="invalid-feedback">@mail ne peut être vide</div>
-                <div id="mailhelp" class="form-text">nous ne partagerons jamais votre @mail</div>
+              <div class="col-md-11 mb-2">
+                <label for="name" class="form-label">Nom</label>
+                <input type="text" class="form-control" id="lastName" required>
+                <div class="valid-feedback">Nom valide</div>
+                <div class="invalid-feedback">Nom ne peut être vide</div>
               </div>
-              <div class="mb-3">
+              <div class="col-md-11 mb-2">
                 <label for="adress" class="form-label">adresse</label>
                 <textarea type="text" class="form-control" rows="2" id="adress" aria-describedby="adresshelp"
                   required></textarea>
                 <div class="valid-feedback">Adresse valide</div>
                 <div class="invalid-feedback">Adresse ne peut être vide</div>
-                <div id="adresshelp" class="form-text">n° rue code postal ville</div>
               </div>
-              <div class="mb-3">
-                <label for="tel" class="form-label">n° de téléphone</label>
-                <input type="tel" class="form-control" id="tel" aria-describedby="telhelp" required>
-                <div class="valid-feedback">N° de téléphone valide</div>
-                <div class="invalid-feedback">N° de téléphone ne peut être vide</div>
-                <div id="telhelp" class="form-text">pour suivi de la commande</div>
+              <div class="col-md-11 mb-2">
+                <label for="city" class="form-label">Ville</label>
+                <input type="ville" class="form-control" id="city" aria-describedby="villehelp" required>
+                <div class="valid-feedback">Ville valide</div>
+                <div class="invalid-feedback">Ville ne peut être vide</div>
+                <div id="villehelp" class="form-text">code postal et ville</div>
+              </div>
+              <div class="col-md-11 mb-3">
+                <label for="mail" class="form-label">@mail</label>
+                <input type="email" class="form-control" id="mail" aria-describedby="mailhelp" required>
+                <div class="valid-feedback">@mail valide</div>
+                <div class="invalid-feedback">@mail ne peut être vide</div>
+                <div id="mailhelp" class="form-text">nous ne partagerons jamais votre @mail</div>
               </div>
             </form>
-            <button id="send-form" type="submit" name="sendform">
-              Confirmation de la commande
-            </button>
+            <div id="send-form">
+
+            </div>
           </div>
         </div>
       </div>

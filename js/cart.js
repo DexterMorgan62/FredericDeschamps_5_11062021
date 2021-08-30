@@ -52,6 +52,7 @@ if (cart === null) {
     buttonDelete.className = "fa fa-trash";
     tableColumneCart.appendChild(buttonDelete);
     tableCart.appendChild(tableColumneCart);
+
     // ecouter bouton SUPPRIMER
     buttonDelete.addEventListener("click", (event) => {
       event.preventDefault();
@@ -90,33 +91,29 @@ if (cart === null) {
       localStorage.setItem("products", JSON.stringify(cart));
       window.location.href = "cart.html";
     };
-    //vider le panier
-
-    const buttonDeleteAll = document.querySelector("#delete-all");
-    // ecouter bouton SUPPRIMER tout
-    buttonDeleteAll.addEventListener("click", (event) => {
-      event.preventDefault();
-      localStorage.clear("product");
-      alert("Le panier a été vidé");
-      window.location.href = "cart.html";
-    });
   }
-  // Vérification des données du formulaire avant envoie au backend
-  /*(function () {
-    'use strict'
-    var forms = document.querySelectorAll(".needs-validation")
-    Array.prototype.slice.call(forms)
-    .forEach(function(form){
-      form.addEventListener("click",function (event){
-        if(!form.checkValidity()){
-          event.preventDefault()
-          event.stopPropagation()
-        }
-        form.classList.add("was-validated")
-      }, false)
-    })
-  })()*/
+
+  //vider le panier
+  const buttonDeleteAll = document.querySelector("#delete-all");
+  // ecouter bouton SUPPRIMER tout
+  buttonDeleteAll.addEventListener("click", (event) => {
+    event.preventDefault();
+    localStorage.clear("product");
+    alert("Le panier a été vidé");
+    window.location.href = "cart.html";
+  });
+
   // Formulaire
+    
+  const buttonSend = document.getElementById("send-form");
+  const buttonSendForm = document.createElement("button");
+  buttonSendForm.id = "send";
+  buttonSendForm.type = "submit";
+  buttonSendForm.className = "sendform";
+  //buttonSendForm.style.visibility ="hidden";
+  buttonSend.appendChild(buttonSendForm);
+  buttonSendForm.innerHTML = "Confirmation de la commande";
+    
   const sendForm = document.querySelector("#send-form");
   sendForm.addEventListener("click", (event) => {
     event.preventDefault();
@@ -127,15 +124,26 @@ if (cart === null) {
       products.push(product.idProduct);
     }
     const contact = {
-      firstName: document.querySelector("#name").value,
-      lastName: document.querySelector("#name").value,
+      firstName: document.querySelector("#firstName").value,
+      lastName: document.querySelector("#lastName").value,
       address: document.querySelector("#adress").value,
-      city: document.querySelector("#adress").value,
+      city: document.querySelector("#city").value,
       email: document.querySelector("#mail").value,
     };
+    console.log(contact)
     const total = document.querySelector("#price-total").outerText;
-
+    // fonction bouton caché si formulaire vide
+    function visibilityButton() {
+      document.getElementById(buttonSendForm).style.visibility = visible;
+    }
     // envoie au backend
+
+      if (contact == "") {
+        buttonSendForm.style.visibility = "hidden";
+      } else {
+        buttonSendForm.style.visibility = "";
+      
+
     fetch("http://localhost:3000/api/cameras/order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -147,17 +155,18 @@ if (cart === null) {
           console.log(res);
         }
       })
+
       .then(function (value) {
         console.log(value);
+
         localStorage.setItem("order", JSON.stringify(value));
       })
       .catch(function (err) {
         console.log(err);
         // Une erreur est survenue
-        alert("node serveur hors service");
+        alert("node server hors service");
       });
     window.open("confirmation.html", "_blank");
-  
-    
+      }
   });
 }

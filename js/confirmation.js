@@ -9,36 +9,21 @@ title.appendChild(textTitle);
 textTitle.className = "lead";
 
 title.innerHTML =
-  "Merci Mr " + confirmationNameContact[0]+ " d'avoir effectué cette commande";
+  "Merci Mr " + confirmationNameContact[1]+ " d'avoir effectué cette commande";
 
 }
-const confirmationContact = [];
-for (dataContact of Object.values(confirmationData.contact)) {
-  confirmationContact.push(dataContact);
 
-
-  const tableBody = document.getElementById("box-cart");
-  const tableCart = document.createElement("tr");
-  tableBody.appendChild(tableCart);
-
-  const nameCart = document.createElement("td");
-  const nameProduct = document.createElement("h2");
-  tableCart.appendChild(nameCart);
-  nameCart.appendChild(nameProduct);
-  nameProduct.innerHTML = dataContact;
-  console.log(confirmationContact)
-}
 
 const confirmationProducts = [];
 for (dataProducts of Object.values(confirmationData.products)) {
   confirmationProducts.push(dataProducts);
-
+  
   const tableBody = document.getElementById("box-cart");
+  const boxProducts = document.createElement("thead");
+  boxProducts.className = "box-products";
+  tableBody.appendChild(boxProducts);
   const tableCart = document.createElement("tr");
-  tableBody.appendChild(tableCart);
-
-  const arrayPhoto = document.createElement("td");
-  const imageCart = document.createElement("img");
+  boxProducts.appendChild(tableCart);
 
   const nameCart = document.createElement("td");
   const nameProduct = document.createElement("h2");
@@ -54,6 +39,20 @@ for (dataProducts of Object.values(confirmationData.products)) {
     dataProducts.name + " " + dataProducts.lenses + " " + priceEuro;
   console.log(dataContact);
   console.log(dataProducts);
+}
+const confirmationContact = [];
+for (dataContact of Object.values(confirmationData.contact)) {
+  confirmationContact.push(dataContact);
+
+
+  const tableBody = document.getElementById("box-cart");
+  const boxContact = document.createElement("thead");
+  boxContact.className="box-contact";
+  tableBody.appendChild(boxContact);
+  const nameProduct = document.createElement("p");
+  boxContact.appendChild(nameProduct);
+  nameProduct.innerHTML = dataContact;
+  console.log(confirmationContact)
 }
 console.log(confirmationContact);
 
