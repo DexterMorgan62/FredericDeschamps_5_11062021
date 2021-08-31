@@ -98,13 +98,16 @@ if (cart === null) {
   // ecouter bouton SUPPRIMER tout
   buttonDeleteAll.addEventListener("click", (event) => {
     event.preventDefault();
-    localStorage.clear("product");
+    deleteAll();
     alert("Le panier a été vidé");
     window.location.href = "cart.html";
   });
-
+  //supprimer tous les produits du panier
+  const deleteAll = () => {
+    localStorage.clear("product");
+  };
   // Formulaire
-    
+
   const buttonSend = document.getElementById("send-form");
   const buttonSendForm = document.createElement("button");
   buttonSendForm.id = "send";
@@ -113,7 +116,7 @@ if (cart === null) {
   //buttonSendForm.style.visibility ="hidden";
   buttonSend.appendChild(buttonSendForm);
   buttonSendForm.innerHTML = "Confirmation de la commande";
-    
+
   const sendForm = document.querySelector("#send-form");
   sendForm.addEventListener("click", (event) => {
     event.preventDefault();
@@ -130,7 +133,7 @@ if (cart === null) {
       city: document.querySelector("#city").value,
       email: document.querySelector("#mail").value,
     };
-    console.log(contact)
+    console.log(contact);
     const total = document.querySelector("#price-total").outerText;
     // fonction bouton caché si formulaire vide
     function visibilityButton() {
@@ -138,35 +141,36 @@ if (cart === null) {
     }
     // envoie au backend
 
-      if (contact == "") {
-        buttonSendForm.style.visibility = "hidden";
-      } else {
-        buttonSendForm.style.visibility = "";
-      
+    if (contact == "") {
+      buttonSendForm.style.visibility = "hidden";
+    } else {
+      buttonSendForm.style.visibility = "";
 
-    fetch("http://localhost:3000/api/cameras/order", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ products, contact }),
-    })
-      .then(function (res) {
-        if (res.ok) {
-          return res.json();
-          console.log(res);
-        }
+      fetch("http://localhost:3000/api/cameras/order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ products, contact }),
       })
+        .then(function (res) {
+          if (res.ok) {
+            return res.json();
+            console.log(res);
+          }
+        })
 
-      .then(function (value) {
-        console.log(value);
+        .then(function (value) {
+          console.log(value);
 
-        localStorage.setItem("order", JSON.stringify(value));
-      })
-      .catch(function (err) {
-        console.log(err);
-        // Une erreur est survenue
-        alert("node server hors service");
-      });
-    window.open("confirmation.html", "_blank");
-      }
+          localStorage.setItem("order", JSON.stringify(value));
+        })
+        .catch(function (err) {
+          console.log(err);
+          // Une erreur est survenue
+          alert("node server hors service");
+        });
+      deleteAll();
+      window.open("confirmation.html", "_blank");
+      window.location.href = "cart.html";
+    }
   });
 }
