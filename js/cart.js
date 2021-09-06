@@ -96,7 +96,14 @@ if (cart === null) {
   }
 
   //vider le panier
-  const buttonDeleteAll = document.querySelector("#delete-all");
+  const buttonDelete = document.getElementById("delete-cart");
+  const buttonDeleteAll = document.createElement("button");
+  buttonDeleteAll.id = "delete-all";
+  buttonDeleteAll.type = "click";
+  buttonDeleteAll.className = "sendform";
+  buttonDelete.appendChild(buttonDeleteAll);
+  buttonDeleteAll.innerHTML = "Vider le panier";
+ 
   // ecouter bouton SUPPRIMER tout
   buttonDeleteAll.addEventListener("click", (event) => {
     event.preventDefault();
