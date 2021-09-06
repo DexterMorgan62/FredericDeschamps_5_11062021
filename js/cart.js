@@ -56,7 +56,7 @@ if (cart === null) {
 
     const idProductSelect = product.idProduct;
     const optionProductSelect = product.option;
-    
+
     //somme total du panier
     const totalCart = [];
 
@@ -73,7 +73,7 @@ if (cart === null) {
       const priceTotal = document.getElementById("price-total");
       priceTotal.innerHTML = "Prix total= " + totalEuro;
     }
-    
+
     //supprimer un produit du panier
     const deleteCart = () => {
       const idProductDelete = (element) =>
@@ -184,7 +184,7 @@ if (cart === null) {
 
     deleteAll();
 
-    window.open("confirmation.html", "_blank");
-    window.location.href = "cart.html";
+    //window.open("confirmation.html", "_blank");
+    window.location.href = "confirmation.html";
   });
 }

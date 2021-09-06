@@ -122,8 +122,12 @@ form {
 #products-cart {
   display: inline-flex;
   align-items: flex-start;
+  width: 100%;
   margin-bottom: 20px;
-  padding-right: 90px;
+  padding: 10px;
+}
+#table-products{
+margin-right: 20px;
 }
 
 .fa-trash {
@@ -170,6 +174,7 @@ h2 {
   background-color: rgb(13, 62, 86);
   padding: 15px;
   border-radius: 10px;
+  margin-right: 40px;
 }
 #form-data {
   background-color: rgb(210, 210, 210);
@@ -268,7 +273,7 @@ h2 {
     padding: 30px;
     margin: 10px;
   }
-  #table-product {
+  #table-products {
     min-width: 280px;
   }
 }
