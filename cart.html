@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="description">
   <link rel="shortcut icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
   <!-- MDB -->
@@ -38,12 +39,12 @@
     <div class="container-fluid">
       <div id="cart" class="bg-primary pt-3 px-3 pt-md-5 px-md-5 text-white overflow-hidden"
         style="border-radius: 21px;">
-        <div class="my-3 py-3">
+        <div class="title-cart my-3 py-3">
           <h1 class="display-5">Panier</h1>
-          <p class="lead">Remplir le formulaire afin de confirmer la commande</p>
+          <p class="lead">Remplir le formulaire pour confirmer</p>
         </div>
         <div id="products-cart">
-          <div class="bg-white text-black shadow-sm mx-auto" style="border-radius: 21px;">
+          <div id="table-products" class="bg-white text-black shadow-sm mx-auto" style="border-radius: 21px;">
             <table id="box-cart" class="table table-sm" id="box-cart">
               <thead class="thead-dark">
                 <h2 class="lead">Produits sélectionnés</h2>
@@ -66,7 +67,7 @@
           <!--formulaire-->
           <div id="form-cart">
             <h2>Formulaire de commande</h2>
-            <form class="was-validated" id="form-data" novalidate>
+            <form class="was-validated" id="form-data">
               <div class="col-md-11 mb-2">
                 <label for="firstName" class="form-label">Prénom</label>
                 <input type="text" class="form-control" id="firstName" required>
@@ -114,7 +115,7 @@
     <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
       <!-- Left -->
       <div class="me-5 d-none d-lg-block">
-        <span>Get connected with us on social networks:</span>
+        <span>Connectez-vous avec nous sur les réseaux sociaux:</span>
       </div>
       <!-- Left -->
 
@@ -152,11 +153,11 @@
           <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
             <!-- Content -->
             <h6 class="text-uppercase fw-bold mb-4">
-              <i class="fas fa-gem me-3"></i>Company name
+              <i class="fas fa-gem me-3"></i>Orinoco
             </h6>
             <p>
-              Here you can use rows and columns to organize your footer content. Lorem ipsum
-              dolor sit amet, consectetur adipisicing elit.
+              applications thématiques ne vendant qu’un seul groupe de produits. Il y a par exemple Oribook pour les
+              livres ou Oritextil pour les vêtements.
             </p>
           </div>
           <!-- Grid column -->
@@ -165,40 +166,13 @@
           <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
             <!-- Links -->
             <h6 class="text-uppercase fw-bold mb-4">
-              Products
+              Produits
             </h6>
             <p>
-              <a href="#!" class="text-reset">Angular</a>
+              <a href="#!" class="text-reset">Oribook</a>
             </p>
             <p>
-              <a href="#!" class="text-reset">React</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Vue</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Laravel</a>
-            </p>
-          </div>
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold mb-4">
-              Useful links
-            </h6>
-            <p>
-              <a href="#!" class="text-reset">Pricing</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Settings</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Orders</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Help</a>
+              <a href="#!" class="text-reset">Oritextil</a>
             </p>
           </div>
           <!-- Grid column -->
@@ -209,7 +183,7 @@
             <h6 class="text-uppercase fw-bold mb-4">
               Contact
             </h6>
-            <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+            <p><i class="fas fa-home me-3"></i>avenue des champs-Elysées, Paris</p>
             <p>
               <i class="fas fa-envelope me-3"></i>
               info@example.com

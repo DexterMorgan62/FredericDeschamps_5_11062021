@@ -1,11 +1,9 @@
 const confirmationData = JSON.parse(localStorage.getItem("order"));
 
-
-const boxText = document.getElementById("box-cart");
+const boxText = document.getElementById("box-order");
 const confirmationText = document.createElement("p");
 boxText.appendChild(confirmationText);
 confirmationText.className = "lead";
-
 
 const totalCart = [];
 
@@ -19,8 +17,12 @@ for (dataProducts of Object.values(confirmationData.products)) {
     currency: "EUR",
   }).format(total / 100);
 
-confirmationText.innerHTML =
-  "Merci Mr " + confirmationData.contact.lastName + " d'avoir effectué cette commande<br/>"+ "N°"+confirmationData.orderId + "<br/> pour un montant total de "+totalEuro;
+  confirmationText.innerHTML =
+    "Merci Mr " +
+    confirmationData.contact.lastName +
+    " d'avoir effectué cette commande<br/>" +
+    "N°" +
+    confirmationData.orderId +
+    "<br/> pour un montant total de " +
+    totalEuro;
 }
-
-

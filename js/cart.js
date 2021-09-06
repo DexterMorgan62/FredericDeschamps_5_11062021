@@ -1,16 +1,17 @@
 const cart = JSON.parse(localStorage.getItem("products"));
 
 // affichage des produits du panier
-
+console.log(cart);
 // si panier vide" afficher panier vide"
 if (cart === null) {
   console.log("vide");
-  const emptyCart = document.createElement("p");
-  emptyCart.innerText = "Le panier est vide";
   const boxCart = document.getElementById("box-cart");
+  const emptyCart = document.createElement("p");
   boxCart.appendChild(emptyCart);
+  emptyCart.innerText = "Le panier est vide";
 } else {
   for (product of cart) {
+    console.log("pas vide");
     const tableBody = document.getElementById("box-cart");
     const tableCart = document.createElement("tr");
     tableBody.appendChild(tableCart);
@@ -53,15 +54,10 @@ if (cart === null) {
     tableColumneCart.appendChild(buttonDelete);
     tableCart.appendChild(tableColumneCart);
 
-    // ecouter bouton SUPPRIMER
-    buttonDelete.addEventListener("click", (event) => {
-      event.preventDefault();
-      deleteCart();
-    });
-
     const idProductSelect = product.idProduct;
     const optionProductSelect = product.option;
-
+    
+    //somme total du panier
     const totalCart = [];
 
     for (product of cart) {
@@ -77,6 +73,7 @@ if (cart === null) {
       const priceTotal = document.getElementById("price-total");
       priceTotal.innerHTML = "Prix total= " + totalEuro;
     }
+    
     //supprimer un produit du panier
     const deleteCart = () => {
       const idProductDelete = (element) =>
@@ -89,8 +86,13 @@ if (cart === null) {
       );
       cart.splice(indexProduct, 1);
       localStorage.setItem("products", JSON.stringify(cart));
-      window.location.href = "cart.html";
     };
+    // ecouter bouton SUPPRIMER
+    buttonDelete.addEventListener("click", (event) => {
+      event.preventDefault();
+      deleteCart();
+      window.location.href = "cart.html";
+    });
   }
 
   //vider le panier
@@ -106,17 +108,35 @@ if (cart === null) {
   const deleteAll = () => {
     localStorage.clear("product");
   };
-  // Formulaire
 
+  // Formulaire
   const buttonSend = document.getElementById("send-form");
   const buttonSendForm = document.createElement("button");
   buttonSendForm.id = "send";
   buttonSendForm.type = "submit";
   buttonSendForm.className = "sendform";
-  //buttonSendForm.style.visibility ="hidden";
   buttonSend.appendChild(buttonSendForm);
   buttonSendForm.innerHTML = "Confirmation de la commande";
+  /* 
+  (() => {
+    "use strict";
 
+    const forms = document.querySelectorAll(".form-data");
+    Array.prototype.slice.call(forms).forEach((form) => {
+      form.addEventListener(
+        "submit",
+        (event) => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  })();
+*/
   const sendForm = document.querySelector("#send-form");
   sendForm.addEventListener("click", (event) => {
     event.preventDefault();
@@ -136,41 +156,35 @@ if (cart === null) {
     console.log(contact);
     const total = document.querySelector("#price-total").outerText;
     // fonction bouton caché si formulaire vide
-    function visibilityButton() {
-      document.getElementById(buttonSendForm).style.visibility = visible;
-    }
+
     // envoie au backend
 
-    if (contact == "") {
-      buttonSendForm.style.visibility = "hidden";
-    } else {
-      buttonSendForm.style.visibility = "";
-
-      fetch("http://localhost:3000/api/cameras/order", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ products, contact }),
+    fetch("http://localhost:3000/api/cameras/order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ products, contact }),
+    })
+      .then(function (res) {
+        if (res.ok) {
+          return res.json();
+          console.log(res);
+        }
       })
-        .then(function (res) {
-          if (res.ok) {
-            return res.json();
-            console.log(res);
-          }
-        })
 
-        .then(function (value) {
-          console.log(value);
+      .then(function (value) {
+        console.log(value);
 
-          localStorage.setItem("order", JSON.stringify(value));
-        })
-        .catch(function (err) {
-          console.log(err);
-          // Une erreur est survenue
-          alert("node server hors service");
-        });
-      deleteAll();
-      window.open("confirmation.html", "_blank");
-      window.location.href = "cart.html";
-    }
+        localStorage.setItem("order", JSON.stringify(value));
+      })
+      .catch(function (err) {
+        console.log(err);
+        // Une erreur est survenue
+        alert("node server hors service");
+      });
+
+    deleteAll();
+
+    window.open("confirmation.html", "_blank");
+    window.location.href = "cart.html";
   });
 }
