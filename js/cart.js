@@ -18,14 +18,11 @@ if (cart === null) {
 
     const arrayPhoto = document.createElement("td");
     const imageCart = document.createElement("img");
-
     arrayPhoto.appendChild(imageCart);
     tableCart.appendChild(arrayPhoto);
     imageCart.className = "img-thumbnail";
     imageCart.src = product.photoProduct;
     const thumbnailLink = document.createElement("a");
-    //cameraLink.href= 'product.html?id=' + camera._id
-
     arrayPhoto.appendChild(thumbnailLink);
     thumbnailLink.appendChild(imageCart);
     thumbnailLink.href = product.linkProduct;
@@ -46,7 +43,11 @@ if (cart === null) {
     const priceProduct = document.createElement("h2");
     tableCart.appendChild(priceCart);
     priceCart.appendChild(priceProduct);
-    priceProduct.innerHTML = product.priceProduct;
+    const priceProductEuro = new Intl.NumberFormat("fr-FR", {
+      style: "currency",
+      currency: "EUR",
+    }).format(product.priceProduct);
+    priceProduct.innerHTML = priceProductEuro;
 
     const tableColumneCart = document.createElement("td");
     const buttonDelete = document.createElement("button");
@@ -57,9 +58,8 @@ if (cart === null) {
     const idProductSelect = product.idProduct;
     const optionProductSelect = product.option;
 
-    //somme total du panier
+    //somme total du panier en euros
     const totalCart = [];
-
     for (product of cart) {
       const priceProductCart = product.priceProduct;
       totalCart.push(priceProductCart);
@@ -97,22 +97,22 @@ if (cart === null) {
 
   //vider le panier
   const buttonDelete = document.getElementById("delete-cart");
-  const buttonDeleteAll = document.createElement("button");
-  buttonDeleteAll.id = "delete-all";
-  buttonDeleteAll.type = "click";
-  buttonDeleteAll.className = "sendform";
-  buttonDelete.appendChild(buttonDeleteAll);
-  buttonDeleteAll.innerHTML = "Vider le panier";
- 
+  const buttondeleteCart = document.createElement("button");
+  buttondeleteCart.id = "delete-all";
+  buttondeleteCart.type = "click";
+  buttondeleteCart.className = "sendform";
+  buttonDelete.appendChild(buttondeleteCart);
+  buttondeleteCart.innerHTML = "Vider le panier";
+
   // ecouter bouton SUPPRIMER tout
-  buttonDeleteAll.addEventListener("click", (event) => {
+  buttondeleteCart.addEventListener("click", (event) => {
     event.preventDefault();
-    deleteAll();
+    deleteCart();
     alert("Le panier a été vidé");
     window.location.href = "cart.html";
   });
   //supprimer tous les produits du panier
-  const deleteAll = () => {
+  const deleteCart = () => {
     localStorage.clear("product");
   };
 
@@ -124,74 +124,67 @@ if (cart === null) {
   buttonSendForm.className = "sendform";
   buttonSend.appendChild(buttonSendForm);
   buttonSendForm.innerHTML = "Confirmation de la commande";
-  /* 
-  (() => {
+
+  // Test présence et validité des valeurs du formulaire avant envoie des données produits et contact au backend
+  (function () {
     "use strict";
-
-    const forms = document.querySelectorAll(".form-data");
-    Array.prototype.slice.call(forms).forEach((form) => {
-      form.addEventListener(
-        "submit",
-        (event) => {
-          if (!form.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add("was-validated");
-        },
-        false
-      );
-    });
-  })();
-*/
-  const sendForm = document.querySelector("#send-form");
-  sendForm.addEventListener("click", (event) => {
-    event.preventDefault();
-    // mettre les valeurs du formulaire dans un objet
-    const products = [];
-
-    for (product of cart) {
-      products.push(product.idProduct);
-    }
-    const contact = {
-      firstName: document.querySelector("#firstName").value,
-      lastName: document.querySelector("#lastName").value,
-      address: document.querySelector("#adress").value,
-      city: document.querySelector("#city").value,
-      email: document.querySelector("#mail").value,
-    };
-    console.log(contact);
-    const total = document.querySelector("#price-total").outerText;
-    // fonction bouton caché si formulaire vide
-
-    // envoie au backend
-
-    fetch("http://localhost:3000/api/cameras/order", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ products, contact }),
-    })
-      .then(function (res) {
-        if (res.ok) {
-          return res.json();
-          console.log(res);
+    const form = document.getElementById("form-data");
+    form.addEventListener(
+      "submit",
+      function (event) {
+        event.preventDefault();
+        if (!form.checkValidity()) {
+          event.stopPropagation();
+          console.log(form.checkValidity());
+        } else {
+          createOrder(cart);
         }
+        form.classList.add("was-validated");
+      },
+      false
+    );
+
+    // Récupération des données produits et contact du panier et envoie au backend
+    const createOrder = (cart) => {
+      // mettre les produits du panier dans un tableau products
+      const products = [];
+      for (product of cart) {
+        products.push(product.idProduct);
+        console.log(products);
+      }
+      // mettre les valeurs du formulaire dans un objet contact
+      const contact = {
+        firstName: document.querySelector("#firstName").value,
+        lastName: document.querySelector("#lastName").value,
+        address: document.querySelector("#adress").value,
+        city: document.querySelector("#city").value,
+        email: document.querySelector("#mail").value,
+      };
+      console.log(contact);
+      const total = document.querySelector("#price-total").outerText;
+
+      // envoie au backend
+      fetch("http://localhost:3000/api/cameras/order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ products, contact }),
       })
-
-      .then(function (value) {
-        console.log(value);
-
-        localStorage.setItem("order", JSON.stringify(value));
-      })
-      .catch(function (err) {
-        console.log(err);
-        // Une erreur est survenue
-        alert("node server hors service");
-      });
-
-    deleteAll();
-
-    //window.open("confirmation.html", "_blank");
-    window.location.href = "confirmation.html";
-  });
+        .then(function (res) {
+          if (res.ok) {
+            return res.json();
+          }
+        })
+        .then(function (value) {
+          console.log(value);
+          localStorage.setItem("order", JSON.stringify(value));
+          window.location.href = "confirmation.html";
+        })
+        .catch(function (err) {
+          console.log(err);
+          // Une erreur est survenue
+          alert("node server hors service");
+        });
+      deleteCart();
+    };
+  })();
 }

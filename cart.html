@@ -65,7 +65,7 @@
           <!--formulaire-->
           <div id="form-cart">
             <h2>Formulaire de commande</h2>
-            <form class="was-validated" id="form-data">
+            <form class="row needs-validation" id="form-data" novalidate>
               <div class="col-md-11 mb-2">
                 <label for="firstName" class="form-label">Prénom</label>
                 <input type="text" class="form-control" id="firstName" required>
@@ -99,10 +99,9 @@
                 <div class="invalid-feedback">@mail ne peut être vide</div>
                 <div id="mailhelp" class="form-text">nous ne partagerons jamais votre @mail</div>
               </div>
+              <div id="send-form">
+              </div>
             </form>
-            <div id="send-form">
-
-            </div>
           </div>
         </div>
       </div>
