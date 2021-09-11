@@ -120,14 +120,12 @@ form {
   align-items: center;
 }
 #products-cart {
-  display: inline-flex;
-  align-items: flex-start;
-  width: 100%;
-  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  justify-items: center;
+  align-items: start;
   padding: 10px;
-}
-#table-products{
-margin-right: 20px;
 }
 
 .fa-trash {
@@ -151,7 +149,6 @@ h2 {
 }
 .img-thumbnail {
   max-height: 140px;
-
 }
 
 #price-total {
@@ -159,7 +156,7 @@ h2 {
   font-size: 18px;
   font-weight: bold;
 }
-#delete-cart{
+#delete-cart {
   text-align: start;
   padding: 10px;
 }
@@ -179,20 +176,22 @@ h2 {
   background-color: rgb(13, 62, 86);
   padding: 15px;
   border-radius: 10px;
-  margin-right: 40px;
 }
 #form-data {
   background-color: rgb(210, 210, 210);
   display: flex;
   flex-direction: column;
+  text-align: left;
 }
 #send {
   border-radius: 10px;
-  margin-top: 20px;
+  margin: 20px;
   padding: 10px;
   background-color: rgb(161, 167, 157) rgb(68, 85, 68);
 }
-
+#send:hover {
+  background-color: greenyellow;
+}
 /*--------------------------CSS confirmation--------------------------*/
 .box-products {
   text-align: justify;
@@ -212,7 +211,7 @@ h2 {
 }
 #box-order {
   padding: 40px;
-  margin-bottom: 20px;
+  margin-bottom: 28px;
 }
 
 /* Smartphone jusqu'a 767px de large*/
@@ -263,7 +262,6 @@ h2 {
   }
   td {
     display: inline-flex;
-    
   }
   #end-cart {
     display: inline-block;

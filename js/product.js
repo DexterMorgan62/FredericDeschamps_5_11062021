@@ -20,7 +20,7 @@ fetch("http://localhost:3000/api/cameras")
   });
 
 const showProduct = (cameras) => {
-  //afichage du produit (de l'oblet) qui a été sélectionné par l'id
+  //afichage du produit qui a été sélectionné par l'id
 
   const idProduct = cameras.find((element) => element._id === id);
 
@@ -66,7 +66,6 @@ const showProduct = (cameras) => {
   }
 
   // récupération des données selectionnées dans selectOption
-
   // sélection de l'id du formulaire
   const idForm = document.querySelector("#selectOption");
 
@@ -93,7 +92,6 @@ const showProduct = (cameras) => {
 
     // local storage
     // stocker la récupération des données du formulaire dans le local storage
-
     // JSON.parse => convertir les données dans le local storage au format JSON
     var cart = JSON.parse(localStorage.getItem("products"));
 
@@ -108,11 +106,11 @@ Consultez le panier OK ou revenir à l'accueil ANNULER`)
         window.location.href = "index.html";
       }
     };
+
     // fonction ajouter un produit dans le local storage
     const addProduct = () => {
       // ajout dans le tableau avec données choisi par utilisateur
       cart.push(dataCart);
-
       // transformation en JSON et envoie dans la KEY "products" dans le local storage et convertir en JSON
       localStorage.setItem("products", JSON.stringify(cart));
     };
